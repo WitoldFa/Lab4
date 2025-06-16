@@ -26,6 +26,26 @@ namespace Lab4
 
             return rotated;
         }
+        private Bitmap InvertColors(Bitmap bmp)
+        {
+            Bitmap result = new Bitmap(bmp.Width, bmp.Height);
+            for (int y = 0; y < bmp.Height; y++)
+            {
+                for (int x = 0; x < bmp.Width; x++)
+                {
+                    Color pixel = bmp.GetPixel(x, y);
+                    Color inverted = Color.FromArgb(255 - pixel.R, 255 - pixel.G, 255 - pixel.B);
+                    result.SetPixel(x, y, inverted);
+                }
+            }
+            return result;
+        }
+        private Bitmap FlipVertically(Bitmap bmp)
+        {
+            Bitmap result = new Bitmap(bmp);
+            result.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            return result;
+        }
 
         public Form1()
         {
@@ -64,6 +84,28 @@ namespace Lab4
             }
 
             pictureBox1.Image = RotateImage(originalImage, angle);
+        }
+
+        private void btnInvert_Click(object sender, EventArgs e)
+        {
+            if (originalImage == null)
+            {
+                MessageBox.Show("Najpierw wczytaj obraz.");
+                return;
+            }
+
+            pictureBox1.Image = InvertColors(originalImage);
+        }
+
+        private void btnUpsideDown_Click(object sender, EventArgs e)
+        {
+            if (originalImage == null)
+            {
+                MessageBox.Show("Najpierw wczytaj obraz.");
+                return;
+            }
+
+            pictureBox1.Image = FlipVertically(originalImage);
         }
     }
 }

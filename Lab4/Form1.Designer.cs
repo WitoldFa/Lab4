@@ -34,6 +34,8 @@
             radio180 = new RadioButton();
             radio270 = new RadioButton();
             btnRotate = new Button();
+            btnInvert = new Button();
+            btnUpsideDown = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -102,11 +104,35 @@
             btnRotate.UseVisualStyleBackColor = false;
             btnRotate.Click += btnRotate_Click;
             // 
+            // btnInvert
+            // 
+            btnInvert.BackColor = SystemColors.ActiveCaption;
+            btnInvert.Location = new Point(164, 159);
+            btnInvert.Name = "btnInvert";
+            btnInvert.Size = new Size(122, 29);
+            btnInvert.TabIndex = 6;
+            btnInvert.Text = "Invert Colors";
+            btnInvert.UseVisualStyleBackColor = false;
+            btnInvert.Click += btnInvert_Click;
+            // 
+            // btnUpsideDown
+            // 
+            btnUpsideDown.BackColor = SystemColors.ActiveCaption;
+            btnUpsideDown.Location = new Point(164, 194);
+            btnUpsideDown.Name = "btnUpsideDown";
+            btnUpsideDown.Size = new Size(122, 29);
+            btnUpsideDown.TabIndex = 7;
+            btnUpsideDown.Text = "Upside Down";
+            btnUpsideDown.UseVisualStyleBackColor = false;
+            btnUpsideDown.Click += btnUpsideDown_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnUpsideDown);
+            Controls.Add(btnInvert);
             Controls.Add(btnRotate);
             Controls.Add(radio270);
             Controls.Add(radio180);
@@ -128,5 +154,7 @@
         private RadioButton radio180;
         private RadioButton radio270;
         private Button btnRotate;
+        private Button btnInvert;
+        private Button btnUpsideDown;
     }
 }

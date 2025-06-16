@@ -30,12 +30,14 @@
         {
             pictureBox1 = new PictureBox();
             btnLoad = new Button();
+            btnGreenOnly = new Button();
             radio90 = new RadioButton();
             radio180 = new RadioButton();
             radio270 = new RadioButton();
             btnRotate = new Button();
             btnInvert = new Button();
             btnUpsideDown = new Button();
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -57,6 +59,18 @@
             btnLoad.UseVisualStyleBackColor = true;
             btnLoad.Click += btnLoad_Click;
             // 
+
+            // btnGreenOnly
+            // 
+            btnGreenOnly.BackColor = Color.FromArgb(128, 255, 128);
+            btnGreenOnly.Location = new Point(164, 333);
+            btnGreenOnly.Name = "btnGreenOnly";
+            btnGreenOnly.Size = new Size(101, 29);
+            btnGreenOnly.TabIndex = 2;
+            btnGreenOnly.Text = "Green Only";
+            btnGreenOnly.UseVisualStyleBackColor = false;
+            btnGreenOnly.Click += btnGreenOnly_Click;
+
             // radio90
             // 
             radio90.AutoSize = true;
@@ -125,18 +139,23 @@
             btnUpsideDown.Text = "Upside Down";
             btnUpsideDown.UseVisualStyleBackColor = false;
             btnUpsideDown.Click += btnUpsideDown_Click;
+
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+
+            Controls.Add(btnGreenOnly);
+
             Controls.Add(btnUpsideDown);
             Controls.Add(btnInvert);
             Controls.Add(btnRotate);
             Controls.Add(radio270);
             Controls.Add(radio180);
             Controls.Add(radio90);
+
             Controls.Add(btnLoad);
             Controls.Add(pictureBox1);
             Name = "Form1";
@@ -150,11 +169,15 @@
 
         private PictureBox pictureBox1;
         private Button btnLoad;
+
+        private Button btnGreenOnly;
+
         private RadioButton radio90;
         private RadioButton radio180;
         private RadioButton radio270;
         private Button btnRotate;
         private Button btnInvert;
         private Button btnUpsideDown;
+
     }
 }

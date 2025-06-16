@@ -4,6 +4,27 @@ namespace Lab4
     {
         private Bitmap originalImage;
 
+        private Bitmap OnlyGreen(Bitmap bmp)
+        {
+            Bitmap result = new Bitmap(bmp.Width, bmp.Height);
+            for (int y = 0; y < bmp.Height; y++)
+            {
+                for (int x = 0; x < bmp.Width; x++)
+                {
+                    Color pixel = bmp.GetPixel(x, y);
+                    if (pixel.G > pixel.R + 30 && pixel.G > pixel.B + 30)
+                    {
+                        result.SetPixel(x, y, pixel);
+                    }
+                    else
+                    {
+                        result.SetPixel(x, y, Color.Black);
+                    }
+                }
+            }
+            return result;
+        }
+
         private Bitmap RotateImage(Bitmap source, float angle)
         {
             float radian = angle * (float)Math.PI / 180f;
@@ -26,6 +47,7 @@ namespace Lab4
 
             return rotated;
         }
+
         private Bitmap InvertColors(Bitmap bmp)
         {
             Bitmap result = new Bitmap(bmp.Width, bmp.Height);
@@ -40,6 +62,7 @@ namespace Lab4
             }
             return result;
         }
+
         private Bitmap FlipVertically(Bitmap bmp)
         {
             Bitmap result = new Bitmap(bmp);
@@ -65,6 +88,17 @@ namespace Lab4
             }
         }
 
+        private void btnGreenOnly_Click(object sender, EventArgs e)
+        {
+            if (originalImage == null)
+            {
+                MessageBox.Show("Najpierw wczytaj obraz.");
+                return;
+            }
+
+            pictureBox1.Image = OnlyGreen(originalImage);
+        }
+
         private void btnRotate_Click(object sender, EventArgs e)
         {
             if (originalImage == null)
@@ -79,7 +113,7 @@ namespace Lab4
             else if (radio270.Checked) angle = 270;
             else
             {
-                MessageBox.Show("Wybierz k?t obrotu.");
+                MessageBox.Show("Wybierz kąt obrotu.");
                 return;
             }
 
